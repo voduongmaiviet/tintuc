@@ -1,152 +1,409 @@
-<!DOCTYPE html>
+<!doctype html> 
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Võ đường Mai Việt - Tin tức</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <style>
-        body { background-color: #f0f2f5; font-family: 'Segoe UI', Arial, sans-serif; }
-        .container { margin-top: 30px; max-width: 800px; }
-        h2 { font-weight: bold; color: #1c1e21; margin-bottom: 25px; }
-
-        /* Bảng tùy chỉnh */
-        .table-container { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,.1); overflow: hidden; }
-        .table { margin-bottom: 0; }
-        .table thead { background-color: #2c3e50; color: white; }
-        
-        /* Căn giữa STT */
-        .stt-col { vertical-align: middle !important; text-align: center; font-weight: bold; font-size: 1.2em; width: 80px; }
-
-        /* Cột Nội dung + Ảnh */
-        .post-container { padding: 15px !important; }
-        .post-img { 
-            width: 100%; 
-            max-height: 400px; 
-            object-fit: cover; 
-            border-radius: 8px; 
-            margin-bottom: 15px;
-            display: block;
-        }
-        .post-text { 
-            font-size: 16px; 
-            line-height: 1.6; 
-            color: #333; 
-            text-align: justify;
-            white-space: pre-line; /* Giữ nguyên xuống dòng từ Sheets */
-        }
-
-        /* Tương thích điện thoại */
-        @media (max-width: 768px) {
-            .table thead { display: none; } /* Ẩn tiêu đề trên mobile */
-            .table-bordered > tbody > tr > td { display: block; width: 100% !important; border: none; }
-            tr { display: block; margin-bottom: 20px; border-bottom: 5px solid #ddd; background: #fff; }
-            .stt-col { background: #e9ecef; padding: 5px !important; width: 100%; }
-            .stt-col::before { content: "Bài số: "; }
-        }
-
-        .text-center{
-            color: red;
-        }
-    </style>
+	<meta charset="utf-8">
+	<title>Võ đường Mai Việt - Tin tức</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="./style.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
+<header>
+	<div class="marquee-container">
+		<div class="marquee-text">VÕ ĐƯỜNG MAI VIỆT (10/08/1999 - 10/08/2026)</div>
+	</div>
+	<button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Menu">
+		<i class="fas fa-bars"></i> Danh mục tin
+	</button>
+</header>
+
 <div class="container">
-    <h2 class="text-center">TIN TỨC MỚI NHẤT</h2>
-    
-    <div class="table-container">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th style="text-align: center;">BẢN TIN CHI TIẾT</th>
-                </tr>
-            </thead>
-            <tbody id="data-body">
-                </tbody>
-        </table>
-    </div>
+	<nav class="sidebar" id="sidebar">
+		<ul id="menu">
+
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="tinthilendai29032026.html" target="_blank">Tin thi lên đai tháng 3 năm 2026</a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+<!--       
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+	 
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>		
+				</ul>
+			</li>
+			
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+			
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+	
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+	
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+	
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+
+			<li class="menu-item">
+				<a href="#" class="menu-link">TIN TỨC THÁNG<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+
+			<li class="menu-item">
+				<a href="#" class="menu-link">NĂM 2026<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+
+			<li class="menu-item">
+				<a href="#" class="menu-link">NĂM 2025<i class="fas fa-chevron-down arrow-icon"></i></a>
+				<ul class="sub-menu">
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+					<li class="tablinks"><a href="" target="_blank"></a></li>
+				</ul>
+			</li>
+-->
+		</ul>
+	</nav>
+
+	<main class="main-content">
+		<div class="welcome-box">
+			<h1>Chào mừng bạn thăm võ đường Mai Việt</h1>
+			<h2 style="color: blue;">Chúc bạn an lành</h2>
+			<p>Hãy chọn một danh mục bên trái (hoặc bấm nút "Danh mục tin" ở phía trên nếu bạn dùng điện thoại) để bắt đầu xem.</p>
+		</div>
+
+		<div class="news-box">
+			<h1></h1>
+			<h2 style="color: blue;">Tin tức thi lần 1 năm 2026</h2>
+			<p>Vào ngày 29/03/2026 Võ đường Mai Việt đã tổ chức kỳ thi phong đai cho võ sinh. Trong kỳ thi này có 22 võ sinh tham gia trong đó cấp 4 lên cấp 3 có 3; cấp 7 lên cấp 6 là 5 võ sinh; cấp 6 lên cấp 5 là 8 võ sinh; cấp 8 lên cấp 7 là 6 võ sinh. Trong đó có 1 võ sinh cấp 8 được thăng vượt cấp là Võ sinh: Phạm Đỗ Anh Duy.</p>
+			<img src="https://lh3.googleusercontent.com/d/1niWkVjC8L0nFal8OE3lRrhz3LDrcTKQd" alt="Chủ nhiệm võ đường" class="news-img">
+			<h3 style="text-align: center; color: red; font-style: italic;">Chủ nhiệm võ đường Mai Việt</h3>
+			<img src="https://lh3.googleusercontent.com/d/17QQ_F5P5zxXsktYbLPM1YnE3HuMSPlds" alt="Võ sinh thi phong đai" class="news-img">
+			<h3 style="text-align: center; color: red; font-style: italic;">Hình ảnh kỳ thi</h3>
+		
+		<!--
+		<div class="video-container">
+		    <iframe width="560" height="315" 
+		        src="https://www.youtube.com/embed/ID_VIDEO" 
+		        frameborder="0" allowfullscreen>
+		    </iframe>
+		</div>
+		-->
+
+		<div class="video-container">
+		    <iframe src="https://drive.google.com/file/d/1x1IGGuONkmKFPgimFdnEyXFId4GwpIsh/preview" 
+		        width="100%" height="480" allow="autoplay">
+		    </iframe>
+		</div>
+
+		</div>
+	</main>
 </div>
 
+<!--
+3. CSS để Video co giãn (Responsive)
+Để video không bị tràn màn hình và tự động thu nhỏ trên điện thoại, bạn hãy thêm đoạn CSS này:
+
+CSS
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỉ lệ khung hình 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 20px 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
+}
+-->
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+}
+
+.content{
+    min-height:90vh;
+    padding:20px;
+}
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+footer a{
+    color:#60a5fa;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+footer a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<!--
+<div class="content">
+    Nội dung website
+</div>
+-->
+
+<footer>
+    <h3>MAI VIỆT TAEKWONDO</h3>
+    
+    <p>
+        Địa chỉ: Nhà văn hoá ấp Sân Bay, Xã Dầu Tiếng, TP Hồ Chí Minh
+    </p>
+
+    <p>
+        Hotline: 0937 551 868
+    </p>
+
+    <div>
+        <a href="https://www.facebook.com/profile.php?id=61572840754253" target = "_blank">Võ đường Mai Việt</a>
+        <a href="https://www.youtube.com/@maivviet" target = "_blank">YouTube</a>
+        <a href="https://zalo.me/0937551868" target = "_blank">Zalo: 0937551868</a>
+    </div>
+
+    <p style="margin-top:15px;">
+        © 2026 Mai Việt Taekwondo. All rights reserved.
+    </p>
+</footer>
+
 <script>
-    const URL_API = "https://script.google.com/macros/s/AKfycbxu3yvyAVyZe3QwTEWY45mtGI6ufmKmDCtuaFnbukhuUrVDXLE_bhpPDE1zeMsdTBZD1g/exec";
+	document.addEventListener("DOMContentLoaded", function() {
+		const menuToggle = document.getElementById("menu-toggle");
+		const sidebar = document.getElementById("sidebar");
+		const menuLinks = document.querySelectorAll(".menu-link");
 
-    $.getJSON(URL_API, function(data) {
-        // Đảo ngược để bài mới nhất lên đầu
-        data.reverse(); 
+		// 1. Logic đóng/mở sidebar trên mobile khi bấm nút Toggle
+		menuToggle.addEventListener("click", function(e) {
+			e.stopPropagation();
+			sidebar.classList.toggle("active");
+		});
 
-        let htmlRows = "";
+		// 2. Logic click mở/đóng sub-menu (Hỗ trợ tốt cho điện thoại/cảm ứng)
+		menuLinks.forEach(link => {
+			link.addEventListener("click", function(e) {
+				// Chỉ kích hoạt chức năng click mở menu khi ở chế độ Mobile/Tablet
+				if (window.innerWidth <= 768) {
+					e.preventDefault();
+					const parent = this.parentElement;
+					
+					// Đóng các sub-menu khác đang mở
+					document.querySelectorAll(".menu-item").forEach(item => {
+						if (item !== parent) {
+							item.classList.remove("open");
+						}
+					});
 
-        data.forEach(function(item) {
-            if(item.noiDung || item.hinhAnh) {
-                let rawUrl = (item.hinhAnh || "").trim();
-                let mediaHtml = ""; 
+					// Đổi trạng thái mở/đóng của sub-menu được click
+					parent.classList.toggle("open");
+				}
+			});
+		});
 
-                // --- BẮT ĐẦU XỬ LÝ MEDIA ---
-
-                // 1. NẾU LÀ YOUTUBE
-                if (rawUrl.includes("youtube.com") || rawUrl.includes("youtu.be")) {
-                    let videoId = "";
-                    if (rawUrl.includes("v=")) {
-                        videoId = rawUrl.split("v=")[1].split("&")[0];
-                    } else if (rawUrl.includes("youtu.be/")) {
-                        videoId = rawUrl.split("youtu.be/")[1].split("?")[0];
-                    }
-                    mediaHtml = `
-                        <div class="embed-responsive embed-responsive-16by9 video-wrapper">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
-                        </div>`;
-                } 
-                
-                // 2. NẾU LÀ GOOGLE DRIVE (VIDEO HOẶC ẢNH)
-                else if (rawUrl.includes("drive.google.com")) {
-                    let fileId = "";
-                    if (rawUrl.includes("id=")) {
-                        fileId = rawUrl.split("id=")[1].split("&")[0];
-                    } else if (rawUrl.includes("/d/")) {
-                        fileId = rawUrl.split("/d/")[1].split("/")[0];
-                    }
-
-                    // Kiểm tra nếu là link video (thường có chữ view, drive_link hoặc bạn tự quy ước)
-                    if (rawUrl.includes("/view") || rawUrl.includes("drive_link") || rawUrl.includes("usp=sharing")) {
-                        mediaHtml = `
-                            <div class="embed-responsive embed-responsive-16by9 video-wrapper">
-                                <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay" allowfullscreen></iframe>
-                            </div>`;
-                    } else {
-                        // Nếu là link ảnh Drive[cite: 1]
-                        mediaHtml = `<img src="https://lh3.googleusercontent.com/d/${fileId}" class="post-img" onerror="this.src='https://via.placeholder.com/400x200?text=Loi+Anh+Drive'">`;
-                    }
-                }
-
-                // 3. NẾU LÀ LINK ẢNH TRỰC TIẾP KHÁC (http...)[cite: 1]
-                else if (rawUrl !== "") {
-                    mediaHtml = `<img src="${rawUrl}" class="post-img" onerror="this.src='https://via.placeholder.com/400x200?text=Loi+Lien+Ket+Anh'">`;
-                }
-
-                // --- KẾT THÚC XỬ LÝ MEDIA ---
-
-                htmlRows += `
-                <tr>
-                    <td class="post-container">
-                        <div class="post-text">${item.noiDung || ""}</div>
-                        ${mediaHtml} 
-                    </td>
-                </tr>`;
-            }
-        });
-
-        // Đổ dữ liệu vào tbody[cite: 1]
-        if (htmlRows === "") {
-            $("#data-body").html("<tr><td class='text-center'>Không có dữ liệu hiển thị.</td></tr>");
-        } else {
-            $("#data-body").html(htmlRows);
-        }
-
-    }).fail(function() {
-        $("#data-body").html("<tr><td class='text-center'>Lỗi kết nối với máy chủ API. Vui lòng kiểm tra lại!</td></tr>");
-    });
+		// Đóng sidebar khi click ra ngoài màn hình trên thiết bị di động
+		document.addEventListener("click", function(e) {
+			if (window.innerWidth <= 768 && !sidebar.contains(e.target) && e.target !== menuToggle) {
+				sidebar.classList.remove("active");
+			}
+		});
+	});
 </script>
+
 </body>
 </html>
