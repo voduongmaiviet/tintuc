@@ -6,6 +6,184 @@
 	<title>Võ đường Mai Việt - Tin tức</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+	<style>
+	/* --- Cấu hình chung & Reset --- */
+	* {
+	    box-sizing: border-box;
+	}
+
+	body {
+	    margin: 0;
+	    font-family: Arial, sans-serif;
+	    background-color: #f9f9f9;
+	    color: #333;
+	}
+
+	/* --- Chữ chạy Header --- */
+	.marquee-container {
+		background-color: #1e3a8a;
+		color: white;
+		padding: 10px 0;
+		overflow: hidden;
+		position: relative;
+	}
+	.marquee-text {
+		display: inline-block;
+		white-space: nowrap;
+		animation: marquee 20s linear infinite;
+		font-weight: bold;
+		padding-left: 100%;
+	}
+	@keyframes marquee {
+		0% { transform: translate3d(0, 0, 0); }
+		100% { transform: translate3d(-100%, 0, 0); }
+	}
+
+	/* --- Nút bấm Menu trên Mobile --- */
+	.menu-toggle {
+		display: none;
+		background: #111827;
+		color: white;
+		border: none;
+		padding: 12px 20px;
+		font-size: 1.1rem;
+		width: 100%;
+		text-align: left;
+		cursor: pointer;
+	}
+
+	/* --- Layout co giãn linh hoạt (Flexbox) --- */
+	.container {
+	    display: flex;
+	    flex-wrap: wrap; 
+	    max-width: 1200px;
+	    margin: 0 auto;
+	    padding: 10px;
+	    gap: 20px;
+	}
+
+	/* Thanh Sidebar */
+	.sidebar {
+	    flex: 1 1 250px; 
+	    background: #fff;
+	    padding: 15px;
+	    border-radius: 8px;
+	    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+	    height: fit-content;
+	}
+	.sidebar ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.sidebar li a {
+		display: block;
+		padding: 10px;
+		color: #333;
+		text-decoration: none;
+		border-bottom: 1px solid #eee;
+	}
+
+	/* Vùng nội dung chính */
+	.main-content {
+	    flex: 3 1 600px; 
+	    min-width: 0; /* Ngăn chặn nội dung làm tràn layout */
+	}
+
+	/* --- CSS cho Bài viết & Nội dung --- */
+	.news-box, .welcome-box, .video-wrapper {
+	    background: #fff;
+	    padding: 20px;
+	    margin-bottom: 20px;
+	    border-radius: 8px;
+	    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+	    word-wrap: break-word; /* Tự động xuống dòng khi chữ quá dài */
+	}
+
+	/* --- CSS cho Hình ảnh co giãn (Responsive Image) --- */
+	.news-img, img {
+	    max-width: 100%;
+	    height: auto; 
+	    display: block;
+	    border-radius: 6px;
+	    margin: 10px auto;
+	}
+
+	/* --- CSS cho Video YouTube co giãn tỉ lệ chuẩn 16:9 --- */
+	.video-container {
+	    position: relative;
+	    padding-bottom: 56.25%; /* Tỉ lệ màn hình 16:9 tiêu chuẩn */
+	    height: 0;
+	    overflow: hidden;
+	    margin-top: 15px;
+	    border-radius: 8px;
+	}
+
+	.video-container iframe {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    border: 0;
+	}
+
+	/* --- Footer --- */
+	footer {
+	    background: #111827;
+	    color: white;
+	    text-align: center;
+	    padding: 30px 20px;
+	    margin-top: 40px;
+	}
+
+	footer a {
+	    color: #60a5fa;
+	    text-decoration: none;
+	    margin: 5px 12px;
+	    display: inline-block; 
+	}
+
+	footer a:hover {
+	    text-decoration: underline;
+	}
+
+	/* --- Responsive tương thích cho mọi thiết bị di động --- */
+	@media (max-width: 768px) {
+		.menu-toggle {
+			display: block; /* Hiển thị nút bấm menu trên điện thoại */
+		}
+
+	    .container {
+	        flex-direction: column; /* Chuyển thành giao diện 1 cột dọc thẳng đứng */
+	        padding: 10px;
+	        gap: 15px;
+	    }
+	    
+	    .sidebar {
+	    	display: none; /* Ẩn menu mặc định trên mobile, sẽ mở khi click toggle */
+	        flex: 1 1 100%;
+	        width: 100%;
+	    }
+	    
+	    .sidebar.active {
+	    	display: block; /* Hiện ra khi bấm nút */
+	    }
+
+	    .main-content {
+	        flex: 1 1 100%;
+	        width: 100%;
+	    }
+
+	    .news-box, .welcome-box, .video-wrapper {
+	    	padding: 15px; /* Thu nhỏ padding để tăng không gian hiển thị */
+	    }
+
+	    h1 { font-size: 1.5rem; }
+	    h2 { font-size: 1.2rem; }
+	}
+	</style>
 </head>
 
 <body>
@@ -14,345 +192,166 @@
 	<div class="marquee-container">
 		<div class="marquee-text">VÕ ĐƯỜNG MAI VIỆT (10/08/1999 - 10/08/2026)</div>
 	</div>
+	<button class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i> DANH MỤC MENU</button>
 </header>
 
 <div class="container">
 	<nav class="sidebar" id="sidebar">
 		<ul id="menu">
-
-
+			<li><a href="#">Trang chủ</a></li>
+			<li><a href="#" class="menu-link">Danh sách bài quyền</a></li>
+			<li><a href="#">Tin tức liên quan</a></li>
 		</ul>
 	</nav>
 
 	<main class="main-content">
 
 		<div class="news-box">
-			<h1></h1>
-			<h2 style="color: blue;"></p>
-			<img src="https://lh3.googleusercontent.com/d/1pwLkpvSO1rrfgLMYFktd2oKuucHyq3gF" alt="" class="news-img">
+			<h1>Tin tức nổi bật</h1>
+			<h2 style="color: blue;">Cập nhật giải đấu mới nhất</h2>
+			<img src="https://lh3.googleusercontent.com/d/1pwLkpvSO1rrfgLMYFktd2oKuucHyq3gF" alt="Ảnh tin tức" class="news-img">
 		</div>
 
 		<div class="welcome-box">
 			<h1>Chào mừng bạn thăm võ đường Mai Việt</h1>
-			<h2 style="color: blue;"></h2>
-			<p></p>
+			<h2 style="color: blue;">Nơi rèn luyện thể chất và tinh thần võ đạo</h2>
+			<p>Nội dung giới thiệu võ đường...</p>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 1</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-hRDpSuN_8" frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/Y-hRDpSuN_8" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 2</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" src="https://www.youtube.com/embed/TpI9BUNzTY4" frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/TpI9BUNzTY4" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 3</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/R0MntKwduPc" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/R0MntKwduPc" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 4</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/sytGacyk3vs" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/sytGacyk3vs" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 5</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/WPfvF9j2uSs" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/WPfvF9j2uSs" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 6</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/doa5YkROdeE" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/doa5YkROdeE" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 7</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/rbLoLAYFS_c" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/rbLoLAYFS_c" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 8</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/Ebg7zpAtrlY" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/Ebg7zpAtrlY" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 9</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/BwRvFjMPXlU" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/BwRvFjMPXlU" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 10</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/tfavzWvG_s0" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/tfavzWvG_s0" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 11</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/Ewikv64NmBk" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/Ewikv64NmBk" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 12</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/MskbdL3KgG4" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/MskbdL3KgG4" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 13</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/gs7ap6MZUjI" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/gs7ap6MZUjI" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 14</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/eWCj1shuzwM" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/eWCj1shuzwM" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 15</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/pqYstKJS9tY" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/pqYstKJS9tY" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 16</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/gDwROjRSyVs" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/gDwROjRSyVs" allowfullscreen></iframe>
 		    </div>
 		</div>
 
 		<div class="video-wrapper">
 		    <h2 style="color: red; text-align: center;">Bài quyền 17</h2>
 		    <div class="video-container">
-		        <iframe width="560" height="315" 
-		        src="https://www.youtube.com/embed/T6Z_74k8Q_Y" 
-		        frameborder="0" allowfullscreen></iframe>
+		        <iframe src="https://www.youtube.com/embed/T6Z_74k8Q_Y" allowfullscreen></iframe>
 		    </div>
 		</div>
 
-	<!--
-		
-		<div class="video-container">
-			    <iframe src="https://drive.google.com/file/d/1x1IGGuONkmKFPgimFdnEyXFId4GwpIsh/preview" 
-			        width="100%" height="480" allow="autoplay">
-			    </iframe>
-		</div>
-
-		-->
-
-			<br><br>
-			<h1 style="color: red;"></h1>
-			<h2 style="color: blue;"></h2>
-			<p><br><br>
-</p><br>
-<h3 style="color: blue; text-align: right;"></h3>
-
-	
-
-
-
-		</div>
 	</main>
 </div>
 
-
-<style>
-/* --- Cấu hình chung & Reset --- */
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-/* --- Layout co giãn linh hoạt --- */
-.container {
-    display: flex;
-    flex-wrap: wrap; /* Tự động xuống dòng trên màn hình nhỏ */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-.sidebar {
-    flex: 1 1 250px; /* Rộng khoảng 250px, tự co giãn */
-    padding: 15px;
-}
-
-.main-content {
-    flex: 3 1 600px; /* Chiếm phần lớn không gian, tối thiểu 600px */
-    padding: 15px;
-}
-
-/* --- CSS cho bài viết & Nội dung --- */
-.news-box, .welcome-box, .video-wrapper {
-    background: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-/* --- CSS cho hình ảnh co giãn (Responsive Image) --- */
-.news-img, img {
-    max-width: 100%;
-    height: auto; /* Giữ nguyên tỉ lệ ảnh không bị móp méo */
-    display: block;
-    border-radius: 6px;
-    margin: 10px auto;
-}
-
-/* --- CSS cho Video YouTube co giãn chuẩn 16:9 --- */
-.video-wrapper {
-    margin-bottom: 30px;
-}
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
-    height: 0;
-    overflow: hidden;
-    margin-top: 10px;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: 8px;
-}
-
-/* --- Footer --- */
-footer {
-    background: #111827;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 40px;
-}
-
-footer a {
-    color: #60a5fa;
-    text-decoration: none;
-    margin: 5px 10px;
-    display: inline-block; /* Dễ bấm hơn trên điện thoại */
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* --- Responsive cho màn hình nhỏ (Mobile) --- */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column; /* Chuyển thành 1 cột dọc trên điện thoại */
-    }
-    
-    .sidebar, .main-content {
-        flex: 1 1 100%;
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    h2 {
-        font-size: 1.2rem; /* Thu nhỏ tiêu đề một chút trên mobile */
-    }
-}
-</style>
-</head>
-
-<body>
-
-<!--
-<div class="content">
-    Nội dung website
-</div>
--->
-
 <footer>
     <h3>MAI VIỆT TAEKWONDO</h3>
-    
-    <p>
-        Địa chỉ: Nhà văn hoá ấp Sân Bay, Xã Dầu Tiếng, TP Hồ Chí Minh
-    </p>
-
-    <p>
-        Hotline: 0937 551 868
-    </p>
+    <p>Địa chỉ: Nhà văn hoá ấp Sân Bay, Xã Dầu Tiếng, TP Hồ Chí Minh</p>
+    <p>Hotline: 0937 551 868</p>
 
     <div>
-        <a href="https://www.facebook.com/profile.php?id=61572840754253" target = "_blank">Võ đường Mai Việt</a>
-        <a href="https://www.youtube.com/@maivviet" target = "_blank">YouTube</a>
-        <a href="https://zalo.me/0937551868" target = "_blank">Zalo: 0937551868</a>
+        <a href="https://www.facebook.com/profile.php?id=61572840754253" target="_blank">Võ đường Mai Việt</a>
+        <a href="https://www.youtube.com/@maivviet" target="_blank">YouTube</a>
+        <a href="https://zalo.me/0937551868" target="_blank">Zalo: 0937551868</a>
     </div>
 
-    <p style="margin-top:15px;">
-        © 2026 Mai Việt Taekwondo. All rights reserved.
-    </p>
+    <p style="margin-top:15px;">© 2026 Mai Việt Taekwondo. All rights reserved.</p>
 </footer>
 
 <script>
@@ -361,36 +360,31 @@ footer a:hover {
 		const sidebar = document.getElementById("sidebar");
 		const menuLinks = document.querySelectorAll(".menu-link");
 
-		// 1. Logic đóng/mở sidebar trên mobile khi bấm nút Toggle
-		menuToggle.addEventListener("click", function(e) {
-			e.stopPropagation();
-			sidebar.classList.toggle("active");
-		});
+		// Đóng/Mở menu sidebar khi click trên điện thoại
+		if (menuToggle) {
+			menuToggle.addEventListener("click", function(e) {
+				e.stopPropagation();
+				sidebar.classList.toggle("active");
+			});
+		}
 
-		// 2. Logic click mở/đóng sub-menu (Hỗ trợ tốt cho điện thoại/cảm ứng)
+		// Xử lý các link menu con
 		menuLinks.forEach(link => {
 			link.addEventListener("click", function(e) {
-				// Chỉ kích hoạt chức năng click mở menu khi ở chế độ Mobile/Tablet
 				if (window.innerWidth <= 768) {
 					e.preventDefault();
 					const parent = this.parentElement;
-					
-					// Đóng các sub-menu khác đang mở
 					document.querySelectorAll(".menu-item").forEach(item => {
-						if (item !== parent) {
-							item.classList.remove("open");
-						}
+						if (item !== parent) { item.classList.remove("open"); }
 					});
-
-					// Đổi trạng thái mở/đóng của sub-menu được click
 					parent.classList.toggle("open");
 				}
 			});
 		});
 
-		// Đóng sidebar khi click ra ngoài màn hình trên thiết bị di động
+		// Click ra ngoài thì đóng menu sidebar lại
 		document.addEventListener("click", function(e) {
-			if (window.innerWidth <= 768 && !sidebar.contains(e.target) && e.target !== menuToggle) {
+			if (window.innerWidth <= 768 && sidebar && !sidebar.contains(e.target) && e.target !== menuToggle) {
 				sidebar.classList.remove("active");
 			}
 		});
