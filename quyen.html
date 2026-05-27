@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài quyền</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', Arial, sans-serif; }
+        .container { margin-top: 30px; max-width: 800px; }
+        h2 { font-weight: bold; color: #1c1e21; margin-bottom: 25px; }
+
+        /* Bảng tùy chỉnh */
+        .table-container { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,.1); overflow: hidden; }
+        .table { margin-bottom: 0; }
+        .table thead { background-color: #2c3e50; color: white; }
+        
+        /* Căn giữa STT */
+        .stt-col { vertical-align: middle !important; text-align: center; font-weight: bold; font-size: 1.2em; width: 80px; }
+
+        /* Cột Nội dung + Ảnh */
+        .post-container { padding: 15px !important; }
+        .post-img { 
+            width: 100%; 
+            max-height: 400px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            margin-bottom: 15px;
+            display: block;
+        }
+        .post-text { 
+            font-size: 16px; 
+            line-height: 1.6; 
+            color: #333; 
+            text-align: justify;
+            white-space: pre-line; /* Giữ nguyên xuống dòng từ Sheets */
+        }
+
+        /* Tương thích điện thoại */
+        @media (max-width: 768px) {
+            .table thead { display: none; } /* Ẩn tiêu đề trên mobile */
+            .table-bordered > tbody > tr > td { display: block; width: 100% !important; border: none; }
+            tr { display: block; margin-bottom: 20px; border-bottom: 5px solid #ddd; background: #fff; }
+            .stt-col { background: #e9ecef; padding: 5px !important; width: 100%; }
+            .stt-col::before { content: "Bài số: "; }
+        }
+
+        .text-center{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">MAI VIỆT TAEKWONDO</h2>
+    
+    <div class="table-container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">CÁC BÀI QUYỀN</th>
+                </tr>
+            </thead>
+            <tbody id="data-body">
+                </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    const URL_API = "https://script.google.com/macros/s/AKfycbxfejvMlOqoTMSDHVXRHLPVL0qU7nT8rwI6I1Xep8sKgTv52vjp_KfbvlS7jxT5bDMytQ/exec";
+
+    $.getJSON(URL_API, function(data) {
+        // Đảo ngược để bài mới nhất lên đầu
+        data.reverse(); 
+
+        let htmlRows = "";
+
+        data.forEach(function(item) {
+            if(item.noiDung || item.hinhAnh) {
+                let rawUrl = (item.hinhAnh || "").trim();
+                let mediaHtml = ""; 
+
+                // --- BẮT ĐẦU XỬ LÝ MEDIA ---
+
+                // 1. NẾU LÀ YOUTUBE
+                if (rawUrl.includes("youtube.com") || rawUrl.includes("youtu.be")) {
+                    let videoId = "";
+                    if (rawUrl.includes("v=")) {
+                        videoId = rawUrl.split("v=")[1].split("&")[0];
+                    } else if (rawUrl.includes("youtu.be/")) {
+                        videoId = rawUrl.split("youtu.be/")[1].split("?")[0];
+                    }
+                    mediaHtml = `
+                        <div class="embed-responsive embed-responsive-16by9 video-wrapper">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                        </div>`;
+                } 
+                
+                // 2. NẾU LÀ GOOGLE DRIVE (VIDEO HOẶC ẢNH)
+                else if (rawUrl.includes("drive.google.com")) {
+                    let fileId = "";
+                    if (rawUrl.includes("id=")) {
+                        fileId = rawUrl.split("id=")[1].split("&")[0];
+                    } else if (rawUrl.includes("/d/")) {
+                        fileId = rawUrl.split("/d/")[1].split("/")[0];
+                    }
+
+                    // Kiểm tra nếu là link video (thường có chữ view, drive_link hoặc bạn tự quy ước)
+                    if (rawUrl.includes("/view") || rawUrl.includes("drive_link") || rawUrl.includes("usp=sharing")) {
+                        mediaHtml = `
+                            <div class="embed-responsive embed-responsive-16by9 video-wrapper">
+                                <iframe class="embed-responsive-item" src="https://drive.google.com/file/d/${fileId}/preview" allow="autoplay" allowfullscreen></iframe>
+                            </div>`;
+                    } else {
+                        // Nếu là link ảnh Drive[cite: 1]
+                        mediaHtml = `<img src="https://lh3.googleusercontent.com/d/${fileId}" class="post-img" onerror="this.src='https://via.placeholder.com/400x200?text=Loi+Anh+Drive'">`;
+                    }
+                }
+
+                // 3. NẾU LÀ LINK ẢNH TRỰC TIẾP KHÁC (http...)[cite: 1]
+                else if (rawUrl !== "") {
+                    mediaHtml = `<img src="${rawUrl}" class="post-img" onerror="this.src='https://via.placeholder.com/400x200?text=Loi+Lien+Ket+Anh'">`;
+                }
+
+                // --- KẾT THÚC XỬ LÝ MEDIA ---
+
+                htmlRows += `
+                <tr>
+                    <td class="post-container">
+                        <div class="post-text">${item.noiDung || ""}</div>
+                        ${mediaHtml} 
+                    </td>
+                </tr>`;
+            }
+        });
+
+        // Đổ dữ liệu vào tbody[cite: 1]
+        if (htmlRows === "") {
+            $("#data-body").html("<tr><td class='text-center'>Không có dữ liệu hiển thị.</td></tr>");
+        } else {
+            $("#data-body").html(htmlRows);
+        }
+
+    }).fail(function() {
+        $("#data-body").html("<tr><td class='text-center'>Lỗi kết nối với máy chủ API. Vui lòng kiểm tra lại!</td></tr>");
+    });
+</script>
+</body>
+</html>
