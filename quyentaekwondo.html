@@ -167,30 +167,6 @@
 	</main>
 </div>
 
-<!--
-3. CSS để Video co giãn (Responsive)
-Để video không bị tràn màn hình và tự động thu nhỏ trên điện thoại, bạn hãy thêm đoạn CSS này:
-
-CSS
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* Tỉ lệ khung hình 16:9 */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    margin: 20px 0;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: 8px;
-}
--->
 
 <style>
 body{
@@ -218,6 +194,25 @@ footer a{
 
 footer a:hover{
     text-decoration:underline;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỉ lệ khung hình 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 20px 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
 }
 </style>
 </head>
