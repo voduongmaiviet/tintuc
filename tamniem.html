@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Điều Tâm Niệm - Võ Đường Mai Việt</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Times New Roman", serif;
+    background:
+        linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+        url('https://lh3.googleusercontent.com/d/1pwLkpvSO1rrfgLMYFktd2oKuucHyq3gF');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:#fff;
+}
+
+/* HEADER */
+
+header{
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid rgba(255,255,255,0.15);
+    padding:18px;
+    text-align:center;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+header h1{
+    font-size:38px;
+    color:#ffd700;
+    letter-spacing:2px;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.6);
+}
+
+header p{
+    margin-top:8px;
+    font-size:18px;
+    color:#f1f1f1;
+}
+
+/* HERO */
+
+.hero{
+    min-height:400px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+}
+
+.hero-content{
+    background:rgba(0,0,0,0.45);
+    padding:50px 35px;
+    border-radius:25px;
+    max-width:900px;
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 10px 40px rgba(0,0,0,0.45);
+}
+
+.hero-content h2{
+    font-size:58px;
+    color:#ffd700;
+    margin-bottom:20px;
+    text-shadow:3px 3px 10px rgba(0,0,0,0.8);
+}
+
+.hero-content p{
+    font-size:24px;
+    line-height:1.8;
+}
+
+/* MAIN */
+
+.container{
+    width:95%;
+    max-width:1250px;
+    margin:auto;
+    padding-bottom:60px;
+}
+
+.main-box{
+    background:rgba(255,255,255,0.12);
+    border-radius:30px;
+    padding:50px 35px;
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 10px 35px rgba(0,0,0,0.35);
+}
+
+.title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.title h1{
+    font-size:52px;
+    color:#ffd700;
+    margin-bottom:15px;
+    text-shadow:3px 3px 10px rgba(0,0,0,0.7);
+}
+
+.title p{
+    font-size:22px;
+    color:#f1f1f1;
+}
+
+/* RULES */
+
+.rules-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+}
+
+.rule-card{
+    position:relative;
+    overflow:hidden;
+    background:rgba(255,255,255,0.12);
+    border-radius:25px;
+    padding:35px 28px;
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.15);
+}
+
+.rule-card::before{
+    content:"";
+    position:absolute;
+    top:-50px;
+    right:-50px;
+    width:130px;
+    height:130px;
+    background:rgba(255,215,0,0.15);
+    border-radius:50%;
+}
+
+.rule-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 12px 35px rgba(0,0,0,0.4);
+    background:rgba(255,255,255,0.18);
+}
+
+.rule-number{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ffd700,#ff9900);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#111;
+    font-size:34px;
+    font-weight:bold;
+    margin-bottom:22px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.rule-card h3{
+    font-size:30px;
+    color:#ffd700;
+    margin-bottom:18px;
+}
+
+.rule-card p{
+    font-size:22px;
+    line-height:1.9;
+    color:#fff;
+}
+
+/* QUOTE */
+
+.quote{
+    margin-top:60px;
+    text-align:center;
+    background:linear-gradient(135deg,#b30000,#ff0000);
+    border-radius:25px;
+    padding:45px 30px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.4);
+}
+
+.quote i{
+    font-size:55px;
+    margin-bottom:20px;
+    color:#ffd700;
+}
+
+.quote h2{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.quote p{
+    font-size:24px;
+    line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    padding:35px 20px;
+    text-align:center;
+    margin-top:60px;
+}
+
+footer h3{
+    font-size:30px;
+    margin-bottom:15px;
+    color:#ffd700;
+}
+
+footer p{
+    margin:10px 0;
+    font-size:18px;
+}
+
+.social{
+    margin-top:20px;
+}
+
+.social a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#1f2937;
+    color:#fff;
+    font-size:24px;
+    margin:0 8px;
+    transition:0.3s;
+    text-decoration:none;
+}
+
+.social a:hover{
+    transform:translateY(-5px);
+    background:#ffd700;
+    color:#111;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:28px;
+    }
+
+    .hero-content{
+        padding:35px 22px;
+    }
+
+    .hero-content h2{
+        font-size:40px;
+    }
+
+    .hero-content p{
+        font-size:20px;
+    }
+
+    .title h1{
+        font-size:38px;
+    }
+
+    .title p{
+        font-size:19px;
+    }
+
+    .rule-card h3{
+        font-size:26px;
+    }
+
+    .rule-card p{
+        font-size:19px;
+    }
+
+    .quote h2{
+        font-size:30px;
+    }
+
+    .quote p{
+        font-size:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>VÕ ĐƯỜNG TAEKWONDO MAI VIỆT</h1>
+    <p>Kỷ Luật • Lễ Nghĩa • Ý Chí • Võ Đạo</p>
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h2>
+            <i class="fa-solid fa-fire"></i>
+            5 ĐIỀU TÂM NIỆM
+        </h2>
+
+        <p>
+            Người học võ không chỉ rèn luyện sức mạnh thể chất,
+            mà còn phải tu dưỡng đạo đức, nhân cách và tinh thần võ đạo.
+        </p>
+
+    </div>
+
+</section>
+
+<div class="container">
+
+    <div class="main-box">
+
+        <div class="title">
+            <h1>
+                <i class="fa-solid fa-medal"></i>
+                NĂM ĐIỀU TÂM NIỆM
+            </h1>
+
+            <p>
+                Tâm niệm dành cho toàn thể võ sinh Võ Đường Mai Việt
+            </p>
+        </div>
+
+        <div class="rules-grid">
+
+            <div class="rule-card">
+
+                <div class="rule-number">1</div>
+
+                <h3>
+                    <i class="fa-solid fa-heart"></i>
+                    Điều 1
+                </h3>
+
+                <p>
+                    Tôn kính cha mẹ, ông bà và người thân.
+                </p>
+
+            </div>
+
+            <div class="rule-card">
+
+                <div class="rule-number">2</div>
+
+                <h3>
+                    <i class="fa-solid fa-trophy"></i>
+                    Điều 2
+                </h3>
+
+                <p>
+                    Nêu cao tinh thần thượng võ và làm rạng danh môn phái.
+                </p>
+
+            </div>
+
+            <div class="rule-card">
+
+                <div class="rule-number">3</div>
+
+                <h3>
+                    <i class="fa-solid fa-handshake"></i>
+                    Điều 3
+                </h3>
+
+                <p>
+                    Tôn kính thầy - Trọng võ đạo - Sống bao dung.
+                </p>
+
+            </div>
+
+            <div class="rule-card">
+
+                <div class="rule-number">4</div>
+
+                <h3>
+                    <i class="fa-solid fa-book"></i>
+                    Điều 4
+                </h3>
+
+                <p>
+                    Tích cực học tập, nâng cao chuyên môn, tuân thủ kỷ luật.
+                </p>
+
+            </div>
+
+            <div class="rule-card">
+
+                <div class="rule-number">5</div>
+
+                <h3>
+                    <i class="fa-solid fa-fist-raised"></i>
+                    Điều 5
+                </h3>
+
+                <p>
+                    Lễ nghĩa - Khiêm tốn - Dũng cảm.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="quote">
+
+            <i class="fa-solid fa-dragon"></i>
+
+            <h2>
+                “Đức độ là nền tảng của võ đạo”
+            </h2>
+
+            <p>
+                Võ sinh Taekwondo Mai Việt luôn rèn luyện bản thân,
+                sống có đạo đức, biết yêu thương, đoàn kết và giúp đỡ mọi người.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <h3>MAI VIỆT TAEKWONDO</h3>
+
+    <p>
+        Địa chỉ: Nhà văn hoá ấp Sân Bay, Xã Dầu Tiếng, TP Hồ Chí Minh
+    </p>
+
+    <p>
+        Hotline: 0937 551 868
+    </p>
+
+    <div class="social">
+
+        <a href="https://www.facebook.com/profile.php?id=61572840754253" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://www.youtube.com/@maivviet" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+        <a href="https://zalo.me/0937551868" target="_blank">
+            <i class="fa-solid fa-comment"></i>
+        </a>
+
+    </div>
+
+    <p style="margin-top:25px;">
+        © 2026 Mai Việt Taekwondo. All rights reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>

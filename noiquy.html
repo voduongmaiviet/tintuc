@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nội Quy Võ Đường</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: "Times New Roman", serif;
+    background:#f4f7fb;
+    color:#222;
+}
+
+/* HEADER */
+
+header{
+    background:linear-gradient(135deg,#001f5c,#003b9b);
+    padding:18px;
+    text-align:center;
+    color:white;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+header h1{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+header p{
+    margin-top:8px;
+    font-size:17px;
+    opacity:0.9;
+}
+
+/* HERO */
+
+.hero{
+    background:url('https://lh3.googleusercontent.com/d/1pwLkpvSO1rrfgLMYFktd2oKuucHyq3gF') center/cover;
+    height:320px;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+}
+
+.hero-content{
+    position:absolute;
+    z-index:2;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content h2{
+    font-size:24px;
+    margin-bottom:15px;
+    text-shadow:2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content p{
+    font-size:20px;
+    max-width:800px;
+    line-height:1.6;
+}
+
+/* CONTAINER */
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:auto;
+    margin-top:-50px;
+    position:relative;
+    z-index:10;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* TITLE */
+
+.main-title{
+    text-align:center;
+    color:#d40000;
+    font-size:42px;
+    margin-bottom:40px;
+    font-weight:bold;
+}
+
+.main-title i{
+    margin-right:12px;
+}
+
+/* RULES */
+
+.rule{
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+    padding:22px;
+    border-radius:14px;
+    margin-bottom:18px;
+    background:#f8fbff;
+    border-left:6px solid #003b9b;
+    transition:0.3s;
+}
+
+.rule:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.rule-number{
+    min-width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#003b9b;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    font-weight:bold;
+}
+
+.rule-content h3{
+    color:#003b9b;
+    margin-bottom:10px;
+    font-size:25px;
+}
+
+.rule-content p{
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* QUOTE */
+
+.quote{
+    margin-top:40px;
+    background:linear-gradient(135deg,#003b9b,#001f5c);
+    color:white;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+}
+
+.quote h2{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.quote p{
+    font-size:22px;
+    line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:50px;
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+footer h3{
+    margin-bottom:15px;
+    font-size:28px;
+}
+
+footer p{
+    margin:8px 0;
+    font-size:18px;
+}
+
+footer a{
+    color:#60a5fa;
+    text-decoration:none;
+    margin:0 10px;
+    font-size:18px;
+}
+
+footer a:hover{
+    text-decoration:underline;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .hero{
+        height:250px;
+    }
+
+    .hero-content h2{
+        font-size:24px;
+    }
+
+    .hero-content p{
+        font-size:17px;
+    }
+
+    .main-title{
+        font-size:30px;
+    }
+
+    .rule{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .rule-content h3{
+        font-size:22px;
+    }
+
+    .rule-content p{
+        font-size:18px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>VÕ ĐƯỜNG TAEKWONDO MAI VIỆT</h1>
+    <p>Kỷ luật - Lễ nghĩa - Ý chí - Tinh thần võ đạo</p>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>NỘI QUY VÕ ĐƯỜNG</h2>
+        <p>
+            Rèn luyện thể chất, đạo đức và tinh thần võ đạo
+        </p>
+    </div>
+</section>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1 class="main-title">
+            <i class="fa-solid fa-medal"></i>
+            NỘI QUY VÕ ĐƯỜNG TAEKWONDO MAI VIỆT
+        </h1>
+
+        <div class="rule">
+            <div class="rule-number">1</div>
+            <div class="rule-content">
+                <h3>Điều 1</h3>
+                <p>
+                    Võ sinh phải luôn tôn kính cha mẹ, ông bà và người thân; sống hiếu thảo, lễ phép trong gia đình.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">2</div>
+            <div class="rule-content">
+                <h3>Điều 2</h3>
+                <p>
+                    Luôn nêu cao tinh thần thượng võ, rèn luyện phẩm chất đạo đức tốt đẹp, góp phần làm rạng danh môn phái.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">3</div>
+            <div class="rule-content">
+                <h3>Điều 3</h3>
+                <p>
+                    Tôn kính thầy, trọng võ đạo; sống bao dung, chan hòa, giúp đỡ lẫn nhau trong tập luyện và cuộc sống.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">4</div>
+            <div class="rule-content">
+                <h3>Điều 4</h3>
+                <p>
+                    Tích cực học tập văn hóa và chuyên môn võ thuật; chấp hành nghiêm chỉnh kỷ luật của võ đường.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">5</div>
+            <div class="rule-content">
+                <h3>Điều 5</h3>
+                <p>
+                    Giữ gìn phẩm chất: <b>Lễ nghĩa – Khiêm tốn – Dũng cảm</b> trong mọi hành vi và ứng xử.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">6</div>
+            <div class="rule-content">
+                <h3>Điều 6</h3>
+                <p>
+                    Tham gia tập luyện đầy đủ, đúng giờ; trường hợp vắng mặt phải xin phép trước với huấn luyện viên.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">7</div>
+            <div class="rule-content">
+                <h3>Điều 7</h3>
+                <p>
+                    Đóng học phí đầy đủ trước khi tham gia tập luyện; trường hợp khó khăn cần báo với huấn luyện viên để được xem xét.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">8</div>
+            <div class="rule-content">
+                <h3>Điều 8</h3>
+                <p>
+                    Tập luyện nghiêm túc, tích cực; không đùa giỡn, gây mất trật tự trong giờ học.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">9</div>
+            <div class="rule-content">
+                <h3>Điều 9</h3>
+                <p>
+                    Kính trọng người lớn, yêu thương trẻ nhỏ; sống hòa nhã, đoàn kết với mọi người.
+                </p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">10</div>
+            <div class="rule-content">
+                <h3>Điều 10</h3>
+                <p>
+                    Lấy nhân nghĩa làm nền tảng, dùng dũng cảm để ứng xử, lấy bao dung để cảm hóa và thuyết phục người khác.
+                </p>
+            </div>
+        </div>
+
+        <div class="quote">
+            <h2>“Võ không chỉ là sức mạnh”</h2>
+            <p>
+                Người học võ phải biết lễ nghĩa, đạo đức và lòng nhân ái để trở thành người có ích cho gia đình và xã hội.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <h3>MAI VIỆT TAEKWONDO</h3>
+
+    <p>
+        Địa chỉ: Nhà văn hoá ấp Sân Bay, Xã Dầu Tiếng, TP Hồ Chí Minh
+    </p>
+
+    <p>
+        Hotline: 0937 551 868
+    </p>
+
+    <div style="margin-top:15px;">
+        <a href="https://www.facebook.com/profile.php?id=61572840754253" target="_blank">
+            <i class="fab fa-facebook"></i> Facebook Võ đường Mai Việt
+        </a>
+
+        <a href="https://www.youtube.com/@maivviet" target="_blank">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
+
+        <a href="https://zalo.me/0937551868" target="_blank">
+            <i class="fa-solid fa-comment"></i> Zalo: 0937551868
+        </a>
+    </div>
+
+    <p style="margin-top:20px;">
+        © 2026 Mai Việt Taekwondo. All rights reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>
