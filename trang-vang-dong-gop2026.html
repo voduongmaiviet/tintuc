@@ -320,9 +320,10 @@ footer a:hover{
 }
 
 /* RESPONSIVE */
+/* RESPONSIVE CHO ĐIỆN THOẠI */
 @media(max-width:768px){
     .hero{
-        height:220px;
+        height:200px;
     }
     .hero-content h2{
         font-size:22px;
@@ -331,20 +332,46 @@ footer a:hover{
         font-size:16px;
     }
     .main-title{
-        font-size:26px;
+        font-size:24px;
+    }
+    .intro-text {
+        font-size: 16px;
+        text-indent: 20px;
+    }
+    .card {
+        padding: 20px 15px; /* Giảm padding của card để tăng không gian hiển thị */
     }
     .item-box{
         flex-direction:column;
         align-items:center;
         text-align:center;
+        padding: 15px;
+    }
+    
+    /* Tối ưu riêng cho khu vực thông tin chuyển khoản */
+    .donation-box {
+        padding: 20px 15px; /* Giảm padding từ 35px xuống để chữ có nhiều đất diễn hơn */
+    }
+    .donation-box h2 {
+        font-size: 20px;
     }
     .donation-flex {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
+    }
+    .bank-info {
+        width: 100%;
     }
     .bank-info p {
-        font-size: 17px;
+        font-size: 16px; /* Hạ size chữ xuống một chút cho vừa vặn */
+        margin-bottom: 10px;
     }
+    .bank-info strong {
+        display: inline-block; /* Giúp các cụm thông tin quan trọng dễ nhìn */
+        word-break: break-word; 
+    }
+    
     .contributors-grid {
         grid-template-columns: 1fr;
     }
@@ -384,7 +411,7 @@ footer a:hover{
 
         <p class="intro-text">
             Để các võ đường Dầu Tiếng, Bến Củi, Định Hiệp hoạt động tốt hơn, nay ban chủ nhiệm trân trọng thông báo đến phụ huynh và võ sinh.
-            Mỗi võ sinh đóng góp 100k (trở lên hoặc hơn) để mua giáp, nón, bảo hộ. Mọi sự đóng góp là tự nguyện và không ép buộc.
+            Mỗi võ sinh đóng góp 100k trở lên hoặc hơn. Mọi sự đóng góp là tự nguyện và không ép buộc.
             Rất mong quý phụ huynh ủng hộ nếu có thể. Mọi sự đóng góp sẽ đưa vào trang vàng của võ đường.
         </p>
 
