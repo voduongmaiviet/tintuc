@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán Điện Tử</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .payment-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 460px; /* Tăng nhẹ độ rộng để nội dung dài không bị xuống dòng xấu */
+            width: 100%;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #01579b;
+        }
+        .qr-section {
+            display: none; /* Ẩn mặc định, điền thông tin xong mới hiện */
+            margin-top: 25px;
+            border-top: 2px dashed #eee;
+            padding-top: 20px;
+        }
+        .qr-code {
+            width: 260px;
+            height: 260px;
+            margin: 10px auto;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 8px;
+            display: block;
+        }
+        
+        /* Bảng chi tiết thông tin thanh toán rõ ràng */
+        .payment-details {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+            text-align: left;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .payment-details td {
+            padding: 10px 14px;
+            font-size: 14px;
+            border-bottom: 1px solid #eceff1;
+        }
+        .payment-details td.label {
+            color: #616161;
+            font-weight: 500;
+            width: 40%;
+        }
+        .payment-details td.value {
+            color: #212121;
+            font-weight: bold;
+        }
+        
+        .amount {
+            font-size: 26px;
+            font-weight: bold;
+            color: #e43a45;
+            margin: 10px 0;
+        }
+        .memo-box {
+            background: #fff8e1;
+            border: 1px dashed #ffe082;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.5px; /* Giảm độ rộng khoảng cách chữ một chút để vừa chuỗi dài */
+            color: #b78103;
+            border-radius: 6px;
+            margin: 5px 0 15px 0;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word; /* Tự động xuống dòng nếu chuỗi quá dài, không lo bị khuất */
+        }
+        .status {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #0288d1;
+            font-weight: 500;
+        }
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #e0f2f1;
+            border-top: 2px solid #0288d1; /* Màu của vòng xoay trùng màu chữ */
+            border-radius: 50%;
+            animation: spin 1s linear infinite; /* Xoay vô hạn */
+            display: inline-block;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .success-box {
+            display: none; /* Ẩn mặc định, thành công mới hiện */
+            color: #2e7d32;
+        }
+        .success-box svg {
+            width: 64px;
+            height: 64px;
+            fill: #4caf50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-container">
+    <div id="inputForm">
+        <h3>Thanh Toán Điện Tử</h3>
+        <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Vui lòng nhập thông tin để tạo mã QR thanh toán.</p>
+        
+        <div class="input-group">
+            <label for="studentName">Họ và tên võ sinh:</label>
+            <input type="text" id="studentName" placeholder="Ví dụ: MAI VAN VIET" required>
+        </div>
+        
+        <div class="input-group">
+            <label for="paymentContent">Nội dung chuyển khoản:</label>
+            <input type="text" id="paymentContent" placeholder="Ví dụ: HOC PHI THANG 7 hoặc TIEN DONG PHUC" required>
+        </div>
+
+        <div class="input-group">
+            <label for="tuitionAmount">Số tiền cần nộp (VNĐ):</label>
+            <input type="number" id="tuitionAmount" placeholder="Nhập số tiền..." required>
+        </div>
+
+        <button class="btn-submit" onclick="generatePaymentQR()">Thanh Toán</button>
+    </div>
+
+    <div id="qrSection" class="qr-section">
+        <h3>Quét Mã QR Để Thanh Toán</h3>
+        <p style="font-size: 14px; color: #777;">Agribank tự động kiểm tra khi bạn chuyển khoản thành công.</p>
+        
+        <img class="qr-code" id="qrImage" src="" alt="Đang tải mã QR...">
+        
+        <div class="amount" id="displayAmount">0 đ</div>
+        
+        <p style="margin-top: 15px; margin-bottom: 5px; font-weight: bold; text-align: left;">Nội dung chuyển khoản:</p>
+        <div class="memo-box" id="orderMemo"></div>
+        
+        <table class="payment-details">
+            <tr>
+                <td class="label">Ngân hàng:</td>
+                <td class="value" style="color: #00796b;">AGRIBANK</td>
+            </tr>
+            <tr>
+                <td class="label">Số tài khoản:</td>
+                <td class="value">5504215009186</td>
+            </tr>
+            <tr>
+                <td class="label">Chủ tài khoản:</td>
+                <td class="value">MAI VAN VIET</td>
+            </tr>
+        </table>
+        
+        <div class="status" id="statusText">
+            <div class="spinner"></div>
+            <span>Hệ thống đang chờ bạn quét mã chuyển khoản...</span>
+        </div>
+        
+        <button onclick="triggerMockSuccess()" style="margin-top:20px; padding:10px 15px; border:none; background:#4caf50; color:white; border-radius:4px; cursor:pointer; width: 100%; font-weight: bold;">
+            Chuyển khoản thành công ấn vào đây
+        </button>
+    </div>
+
+    <div id="successBox" class="success-box">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <h2>Thanh Toán Thành Công!</h2>
+        <p>Hệ thống đã ghi nhận thông tin của võ sinh: <br><b id="successStudentInfo" style="color:#0288d1; font-size: 18px;"></b></p>
+    </div>
+</div>
+
+<script src="scriptthanhtoan.js"></script>
+
+</body>
+</html>
