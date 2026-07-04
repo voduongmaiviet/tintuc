@@ -42,6 +42,25 @@ header p{
     opacity:0.9;
 }
 
+header h1 {
+    display: flex;
+    flex-direction: column; /* Luôn xếp dọc trên điện thoại */
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffda79;
+}
+
+/* Nếu bạn muốn trên màn hình máy tính lớn nó hiển thị 1 hàng ngang, 
+   còn màn hình điện thoại tự xuống dòng, hãy dùng Media Query: */
+@media(min-width: 768px) {
+    header h1 {
+        flex-direction: row; /* Chuyển thành hàng ngang trên máy tính */
+        justify-content: center;
+        gap: 15px; /* Khoảng cách giữa các từ */
+    }
+}
+
 /* HERO */
 .hero{
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/d/1pwLkpvSO1rrfgLMYFktd2oKuucHyq3gF') center/cover;
@@ -491,7 +510,11 @@ footer a:hover{
 <body>
 
 <header>
-    <h1>VÕ ĐƯỜNG TAEKWONDO MAI VIỆT</h1>
+    <h1>
+        <span>VÕ ĐƯỜNG</span>
+        <span>TAEKWONDO</span>
+        <span>MAI VIỆT</span>
+    </h1>
     <p>Kỷ luật - Lễ nghĩa - Ý chí - Tinh thần võ đạo</p>
 </header>
 
