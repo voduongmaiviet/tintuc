@@ -376,6 +376,115 @@ footer a:hover{
         grid-template-columns: 1fr;
     }
 }
+
+.vcb-btn{
+    position:relative;
+    overflow:hidden;
+
+    width:100%;
+    padding:18px 24px;
+
+    border:none;
+    border-radius:20px;
+
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+
+    font-size:22px;
+    font-weight:700;
+    color:#fff;
+
+    background:linear-gradient(
+        180deg,
+        #00a65a 0%,
+        #008b4c 45%,
+        #006738 100%
+    );
+
+    box-shadow:
+        0 12px 28px rgba(0,103,56,.35),
+        inset 0 2px 0 rgba(255,255,255,.35),
+        inset 0 -3px 8px rgba(0,0,0,.15);
+
+    transition:.25s;
+}
+
+.vcb-btn i{
+    font-size:28px;
+}
+
+.vcb-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 18px 40px rgba(0,103,56,.45),
+        inset 0 2px 0 rgba(255,255,255,.45);
+}
+
+.vcb-btn:active{
+    transform:scale(.97);
+}
+
+.vcb-btn::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:50%;
+    border-radius:20px 20px 50px 50px;
+
+    background:linear-gradient(
+        rgba(255,255,255,.35),
+        rgba(255,255,255,0)
+    );
+}
+
+.vcb-btn .shine{
+    position:absolute;
+    top:0;
+    left:-120%;
+
+    width:50%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+}
+
+.vcb-btn:hover .shine{
+    animation:shine 1s ease;
+}
+
+@keyframes shine{
+    from{
+        left:-120%;
+    }
+    to{
+        left:170%;
+    }
+}
+
+.vcb-btn{
+    background:linear-gradient(135deg,#00B45A,#008E49,#006738);
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.08) inset,
+        0 10px 30px rgba(0,103,56,.45),
+        0 0 25px rgba(0,166,90,.35);
+
+    letter-spacing:.6px;
+}
 </style>
 </head>
 
@@ -453,9 +562,10 @@ footer a:hover{
             <p><i class="fa-solid fa-university"></i> Ngân hàng: <strong>Agribank</strong></p>
             <p><i class="fa-solid fa-hashtag"></i> Số tài khoản: <strong>5504215009186</strong></p>
             <p><i class="fa-solid fa-user"></i> Chủ tài khoản: <strong>MAI VAN VIET</strong></p>
-            <p><i class="fa-solid fa-pen-clip"></i> Nội dung chuyển khoản: <br><strong style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">Họ tên Võ sinh Đóng góp võ đường Mai Việt 100.000 đồng (không dấu)</strong></p>
+            <p><i class="fa-solid fa-pen-clip"></i> Nội dung chuyển khoản: <br><strong style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">Họ tên Võ sinh Đóng góp võ đường Mai Việt (không dấu)</strong></p>
+
         </div>
-        
+
         <div class="qr-code">
             <img src="QRPay.jpg" alt="Mã QR Mai Việt" />
             <br>
@@ -463,6 +573,16 @@ footer a:hover{
         </div>
     </div>
 </div>
+
+<div class="mt-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm text-center">
+    <button
+        onclick="window.location.href='thanhtoandientu.html'" class="vcb-btn">
+        <span class="shine"></span>
+        <i class="fa-solid fa-qrcode"></i>
+        <span>CHUYỂN KHOẢN NGAY</span>
+    </button>
+</div>
+
 
 <!-- PHẦN DANH SÁCH PHỤ HUYNH ĐÓNG GÓP (MỚI THÊM) -->
 <div class="contributors-box">
@@ -513,15 +633,15 @@ footer a:hover{
             <span class="contributor-name">Phụ huynh Võ sinh Lê Gia Khánh</span>
             <span class="contributor-detail">Đóng góp 100.000 đồng</span>
         </div>
-   <!--     <div class="contributor-item">
-            <span class="contributor-name">Phụ huynh Võ sinh </span>
+       <div class="contributor-item">
+            <span class="contributor-name">Phụ huynh Võ sinh Phạm Quỳnh Anh</span>
             <span class="contributor-detail">Đóng góp 100.000 đồng</span>
         </div>
         <div class="contributor-item">
-            <span class="contributor-name">Phụ huynh Võ sinh </span>
+            <span class="contributor-name">Phụ huynh Võ sinh Phạm Đức Minh</span>
             <span class="contributor-detail">Đóng góp 100.000 đồng</span>
         </div>
-        <div class="contributor-item">
+  <!--       <div class="contributor-item">
             <span class="contributor-name">Phụ huynh Võ sinh </span>
             <span class="contributor-detail">Đóng góp 100.000 đồng</span>
         </div>
