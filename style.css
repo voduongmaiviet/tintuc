@@ -336,6 +336,12 @@ header {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Tạo hiệu ứng bóng đổ cho chuyên nghiệp */
 }
 
+p {
+    text-align: justify;
+    text-justify: inter-word; /* Hỗ trợ tốt trên một số trình duyệt */
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
 /*
 .news-img {
     width: 100%;
