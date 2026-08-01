@@ -10,14 +10,13 @@ body {
   font-size: 16px;
   line-height: 1.5;
   background-color: #f4f6f8;
-  /* Thay ảnh nền dự phòng nếu không tải được ảnh thcs.jpg */
   background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url(../IMAGE/thcs.jpg);
   background-size: cover;
   background-attachment: fixed;
   color: #333;
 }
 
-/* --- HEADER & EFFECT MARQUEE (Thay thế thẻ <marquee> cũ) --- */
+/* --- HEADER & MARQUEE --- */
 header {
   background: #053b0e;
   padding: 10px 20px;
@@ -50,7 +49,6 @@ header {
   100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* Nút bấm toggle menu ẩn hiện */
 .menu-toggle-btn {
   margin-top: 10px;
   padding: 10px 20px;
@@ -61,7 +59,7 @@ header {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  display: none; /* Chỉ hiển thị trên thiết bị nhỏ */
+  display: none;
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
@@ -112,14 +110,12 @@ header {
   transition: transform 0.3s ease;
 }
 
-/* Hiệu ứng di chuột trên máy tính (Desktop) */
 @media (min-width: 769px) {
   .menu-item:hover > .menu-link {
     color: #ff3300;
     background: #FFFF00;
   }
 
-  /* Sub-menu hiển thị dạng bay ngang trên desktop */
   .sub-menu {
     position: absolute;
     left: 100%;
@@ -140,7 +136,6 @@ header {
   }
 }
 
-/* Định dạng các đường link bên trong Sub-menu */
 .sub-menu li {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -158,26 +153,28 @@ header {
 .sub-menu li a:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #FFFF00;
-  padding-left: 25px; /* Tạo hiệu ứng đẩy nhẹ sang phải */
+  padding-left: 25px;
 }
 
-/* --- TRANG CHỦ / MAIN CONTENT --- */
+/* --- MAIN CONTENT --- */
 .main-content {
   flex-grow: 1;
-  padding: 40px;
+  padding: 30px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .welcome-box {
   background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 8px;
-  max-width: 800px;
   width: 100%;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   border-top: 5px solid #0c5a18;
+  box-sizing: border-box;
 }
 
 .welcome-box h1 {
@@ -192,7 +189,40 @@ header {
   line-height: 1.6;
 }
 
-/* --- RESPONSIVE CHO THIẾT BỊ DI ĐỘNG (Dưới 768px) --- */
+.news-box {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+.news-box h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.news-img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* --- RESPONSIVE CHO MOBILE (Dưới 768px) --- */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -200,7 +230,7 @@ header {
   }
 
   .menu-toggle-btn {
-    display: inline-flex; /* Hiện nút Toggle ẩn/hiện */
+    display: inline-flex;
   }
 
   .container {
@@ -208,11 +238,10 @@ header {
     position: relative;
   }
 
-  /* Biến Sidebar thành Menu ngăn kéo trượt từ trái qua */
   .sidebar {
     position: fixed;
-    left: -280px; /* Ẩn ra ngoài mép màn hình */
-    top: 102px; /* Dưới Header */
+    left: -280px;
+    top: 102px;
     bottom: 0;
     width: 280px;
     z-index: 999;
@@ -220,12 +249,10 @@ header {
     background: #0c5a18;
   }
 
-  /* Kích hoạt class "active" bằng JS khi ấn nút toggle */
   .sidebar.active {
     left: 0;
   }
 
-  /* Trên mobile, các sub-menu sẽ trượt xuống dưới (accordion) thay vì bay ngang */
   .sub-menu {
     display: none;
     background: #07380f;
@@ -233,121 +260,73 @@ header {
     padding-left: 15px;
   }
 
-  /* Khi click mở rộng sub-menu */
   .menu-item.open .sub-menu {
     display: block;
   }
 
   .menu-item.open .arrow-icon {
-    transform: rotate(180deg); /* Xoay mũi tên lên */
+    transform: rotate(180deg);
   }
 
   .main-content {
+    padding: 15px;
+  }
+
+  .news-box, .welcome-box {
     padding: 20px;
   }
 
-  .welcome-box h1 {
-    font-size: 1.5rem;
+  .news-box h1 {
+    font-size: 1.3rem;
   }
 }
 
-/* Tùy chỉnh khối tin tức */
-.news-box {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    width: 100%;            /* Luôn rộng 100% của container cha */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    box-sizing: border-box;
+/* --- FOOTER --- */
+footer {
+  width: 100%;
+  background: #0b1220;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+  clear: both;
+  box-sizing: border-box;
+  border-top: 1px solid #1e293b;
 }
 
-/* Đảm bảo tiêu đề không bị bó hẹp */
-.news-box h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    line-height: 1.4;
+footer h3 {
+  color: #facc15;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
-/* Container chính bao bọc cả 2 khối */
-.main-content {
-    display: flex;
-    flex-direction: column; /* Xếp các khối con theo hàng dọc */
-    gap: 20px;              /* Khoảng cách giữa khối chào mừng và khối tin tức */
-    padding: 15px;          /* Khoảng cách đệm với lề màn hình */
-    width: 100%;            /* Chiếm hết chiều ngang khả dụng */
-    box-sizing: border-box; /* Đảm bảo padding không làm tràn khung */
+footer p {
+  color: #9aa6ab;
+  margin: 6px 0;
+  font-size: 0.95rem;
+  text-align: center;
 }
 
-/* Tùy chỉnh khối chào mừng */
-.welcome-box {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    box-sizing: border-box;
+footer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+  flex-wrap: wrap;
 }
 
-/* Tùy chỉnh khối tin tức (khối được khoanh đỏ trong image_74d76d.jpg) */
-.news-box {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    width: 100%;            /* Ép rộng 100% để chữ không bị ngắt dòng đứng */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    box-sizing: border-box;
+footer a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin: 0;
 }
 
-/* Xử lý chữ cho tiêu đề để không bị vỡ trên điện thoại nhỏ */
-.news-box h1 {
-    font-size: 1.5rem;
-    margin-top: 0;
-    line-height: 1.3;
+footer a:hover {
+  text-decoration: underline;
+  color: #60a5fa;
 }
-
-/* Responsive: Khi màn hình rất nhỏ (Smartphone) */
-@media (max-width: 600px) {
-    .main-content {
-        padding: 10px;
-    }
-    
-    .news-box, .welcome-box {
-        padding: 15px;
-    }
-
-    .news-box h1 {
-        font-size: 1.2rem;
-    }
-
-    .news-box h2 {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-}
-
-.news-img {
-    width: 100%;          /* Ảnh luôn rộng bằng khung chứa (news-box) */
-    max-width: 800px;     /* Giới hạn chiều rộng tối đa để ảnh không bị quá to trên máy tính */
-    height: auto;         /* Tự động điều chỉnh chiều cao theo tỉ lệ để ảnh không bị móp */
-    display: block;       /* Chuyển ảnh sang dạng khối */
-    margin: 20px auto;    /* Căn giữa ảnh và tạo khoảng cách trên dưới */
-    border-radius: 8px;   /* Bo góc nhẹ cho giống với các khối nội dung */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Tạo hiệu ứng bóng đổ cho chuyên nghiệp */
-}
-
-p {
-    text-align: justify;
-    text-justify: inter-word; /* Hỗ trợ tốt trên một số trình duyệt */
-    line-height: 1.7;
-    margin-bottom: 1rem;
-}
-/*
-.news-img {
-    width: 100%;
-    max-width: 800px; /* Có thể chỉnh tùy ý */
-/*    height: auto;
-/*    display: block;
-/*    margin: 20px auto;
-/*    border-radius: 8px;
-/*}
