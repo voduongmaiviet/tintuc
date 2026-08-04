@@ -290,9 +290,9 @@
     // Tự động fetch file danh_sach.json cùng thư mục khi load trang
     async function loadInitialData() {
         try {
-            const response = await fetch('danh_sach.json');
+            const response = await fetch('danhsachkhen.json');
             if (!response.ok) {
-                throw new Error('Không thể tải file danh_sach.json');
+                throw new Error('Không thể tải file danhsachkhen.json');
             }
             const data = await response.json();
             renderTable(data);
