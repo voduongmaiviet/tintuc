@@ -155,6 +155,38 @@ header {
   }
 }
 
+/* --- TÙY CHỈNH TIÊU ĐỀ QUỐC HIỆU & KHẨU HIỆU CO GIÃN 1 DÒNG --- */
+.country-title-box {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.country-name {
+  color: #b30000;
+  font-size: 3.8vw; /* Co giãn theo chiều rộng màn hình điện thoại */
+  font-weight: bold;
+  margin-bottom: 4px;
+  white-space: nowrap; /* Bắt buộc hiển thị trên 1 dòng */
+}
+
+.motto-text {
+  color: #b30000;
+  font-size: 3.5vw; /* Co giãn theo chiều rộng màn hình điện thoại */
+  font-weight: 600;
+  white-space: nowrap; /* Bắt buộc hiển thị trên 1 dòng */
+}
+
+/* Cố định kích thước chuẩn trên màn hình máy tính / thiết bị lớn */
+@media (min-width: 768px) {
+  .country-name {
+    font-size: 1.25rem;
+  }
+  .motto-text {
+    font-size: 1.1rem;
+  }
+}
+
 /* --- NEWS BOX THÔNG BÁO NGHỈ LỄ --- */
 .news-box {
   background-color: #ffffff;
