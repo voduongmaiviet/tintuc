@@ -106,7 +106,7 @@ header {
   background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
   border: 2px solid #ff4d4d;
   border-radius: 12px;
-  padding: 30px;
+  padding: 30px 15px; /* Giảm padding ngang nhẹ để có không gian tối đa trên mobile */
   text-align: center;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(220, 20, 60, 0.15);
@@ -155,36 +155,30 @@ header {
   }
 }
 
-/* --- TÙY CHỈNH TIÊU ĐỀ QUỐC HIỆU & KHẨU HIỆU CO GIÃN 1 DÒNG --- */
+/* --- TÙY CHỈNH TIÊU ĐỀ QUỐC HIỆU & KHẨU HIỆU CÂN ĐỐI TRÊN MỌI THIẾT BỊ --- */
 .country-title-box {
   width: 100%;
   text-align: center;
   margin-top: 10px;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 
 .country-name {
   color: #b30000;
-  font-size: 3.8vw; /* Co giãn theo chiều rộng màn hình điện thoại */
+  /* Sử dụng clamp: Tự động co giãn theo màn hình, không bao giờ quá to hoặc quá nhỏ */
+  font-size: clamp(0.72rem, 3.1vw, 1.25rem); 
   font-weight: bold;
-  margin-bottom: 4px;
-  white-space: nowrap; /* Bắt buộc hiển thị trên 1 dòng */
+  margin-bottom: 6px;
+  white-space: nowrap; /* Giữ chữ luôn nằm trên 1 dòng */
 }
 
 .motto-text {
   color: #b30000;
-  font-size: 3.5vw; /* Co giãn theo chiều rộng màn hình điện thoại */
+  /* Sử dụng clamp tương tự cho khẩu hiệu */
+  font-size: clamp(0.68rem, 2.7vw, 1.1rem);
   font-weight: 600;
-  white-space: nowrap; /* Bắt buộc hiển thị trên 1 dòng */
-}
-
-/* Cố định kích thước chuẩn trên màn hình máy tính / thiết bị lớn */
-@media (min-width: 768px) {
-  .country-name {
-    font-size: 1.25rem;
-  }
-  .motto-text {
-    font-size: 1.1rem;
-  }
+  white-space: nowrap; /* Giữ chữ luôn nằm trên 1 dòng */
 }
 
 /* --- NEWS BOX THÔNG BÁO NGHỈ LỄ --- */
